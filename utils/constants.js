@@ -26,6 +26,7 @@ export const ROUTES = {
   REGISTER: "/register",
 
   CREATE_ORDER: "/create-order",
+  GET_ALL_ORDERS: "/get-all-orders",
   GET_ORDER_BY_ID: "/get-order/:id",
   UPDATE_ORDER_BY_ID: "/update-order/:id",
   DELETE_ORDER: "/delete-order/:id",

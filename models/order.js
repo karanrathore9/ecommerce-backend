@@ -5,7 +5,7 @@ const orderSchema = new mongoose.Schema({
   orderItems: [
     {
       type: mongoose.Schema.Types.ObjectId,
-      ref: OrderItem,
+      ref: "OrderItem",
       required: true,
     },
   ],

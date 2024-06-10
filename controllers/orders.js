@@ -27,6 +27,17 @@ export const getOrderById = async (req, res) => {
     res.status(error.output?.statusCode ?? 500).json(error);
   }
 };
+export const getAllOrders = async (req, res) => {
+  try {
+    const data = await OrderServices.getAllOrders();
+    res.status(200).json({
+      ...data,
+      code: 200,
+    });
+  } catch (error) {
+    res.status(error.output?.statusCode ?? 500).json(error);
+  }
+};
 export const updateOrderById = async (req, res) => {
   try {
     const id = req.params.id;

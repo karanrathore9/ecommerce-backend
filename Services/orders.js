@@ -82,6 +82,24 @@ export class OrderServices {
     }
   };
 
+  static getAllOrders = async () => {
+   
+     try {
+       const data = await Order.find().populate("user", "name email");
+       return {
+         success: true,
+         message: API_RESPONSE_MSG.categories_fetched_successfully,
+         data: data,
+       };
+     } catch (error) {
+       return {
+         success: false,
+         message: API_RESPONSE_MSG.failed,
+         error: error,
+       };
+     }
+  };
+
   static updateOrderById = async (data) => {
     try {
       const id = data.id;

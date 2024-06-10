@@ -50,14 +50,18 @@ export const updateProductById = async (req, res) => {
     try{
         const id = req.params.id;
         const body = {
-            ...req.body,
+          ...req.body,
+          
+          fileName: req.file ?`${req.protocol}://${req.get("host")}/public/uploads/${req.file.filename}`: null,
         };
+        console.log(req.body)
         const data = await ProductServices.updateProductById(id, body);
         res.status(200).json({
             ...data,
             code: 200,
         });
     }catch(error){
+        console.log(error)
         res.status(error.output?.statusCode ?? 500).json(error);
     }
 }

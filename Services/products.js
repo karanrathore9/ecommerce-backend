@@ -108,7 +108,6 @@ export class ProductServices {
         name,
         description,
         richDescription,
-        image,
         brand,
         price,
         category,
@@ -133,6 +132,10 @@ export class ProductServices {
           error: "Category not found",
         };
       }
+      console.log(data);
+
+      const productBefore = await Product.findById(id);
+      console.log(productBefore);
 
       const product = await Product.findByIdAndUpdate(
         id,
@@ -140,7 +143,7 @@ export class ProductServices {
           name: name,
           description: description,
           richDescription: richDescription,
-          image: image,
+          image: data.fileName? data.fileName : productBefore.image,
           brand: brand,
           price: price,
           category: category,
@@ -157,6 +160,7 @@ export class ProductServices {
         data: product,
       };
     } catch (error) {
+      console.log("+++++++++++++",error);
       return {
         success: false,
         message: API_RESPONSE_MSG.failed,

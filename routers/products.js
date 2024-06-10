@@ -43,7 +43,11 @@ const upload = multer({ storage: storage });
 productRouter.post(ROUTES.ADD_PRODUCT, upload.single("image"), postProduct);
 productRouter.get(ROUTES.GET_PRODUCTS, getProduct);
 productRouter.get(ROUTES.GET_PRODUCT_BY_ID, getProductById);
-productRouter.put(ROUTES.UPDATE_PRODUCT_BY_ID, updateProductById);
+productRouter.put(
+  ROUTES.UPDATE_PRODUCT_BY_ID,
+  upload.single("image"),
+  updateProductById,
+);
 productRouter.delete(ROUTES.DELETE_PRODUCT, deleteProduct);
 productRouter.get(ROUTES.GET_PRODUCTS_COUNT, getProductsCount);
 productRouter.get(ROUTES.FEATURED_PRODUCTS, getFeaturedProducts);

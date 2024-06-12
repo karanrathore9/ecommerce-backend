@@ -59,7 +59,7 @@ export class UserServices {
 
   static getAllUsers = async () => {
     try {
-      const users = await User.find().select("name email phone");
+      const users = await User.find().select("name email phone isAdmin");
       return {
         success: true,
         message: API_RESPONSE_MSG.users_fetched_successfully,
@@ -174,6 +174,23 @@ export class UserServices {
         success: true,
         message: API_RESPONSE_MSG.users_count_fetched_successfully,
         data: count,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: API_RESPONSE_MSG.failed,
+        error: error,
+      };
+    }
+  };
+
+  static deleteUser = async (id) => {
+    try {
+      const user = await User.findByIdAndDelete(id);
+      return {
+        success: true,
+        message: API_RESPONSE_MSG.user_deleted_successfully,
+        data: user,
       };
     } catch (error) {
       return {

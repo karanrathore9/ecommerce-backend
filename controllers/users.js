@@ -2,6 +2,7 @@ import { UserServices } from "../Services/users.js";
 
 export const addUser = async (req, res) => {
     try{
+        console.log("here at add user");
         const body ={
             ...req.body,
         };
@@ -11,6 +12,7 @@ export const addUser = async (req, res) => {
             code: 200,
         });
     }catch(error){
+        console.log("here at add user error", error);
         console.log(error);
         res.status(error.output?.statusCode ?? 500).json(error);
     }
@@ -90,6 +92,19 @@ export const loginUser = async (req, res) => {
 export const getUsersCount = async (req, res) => {
     try{
         const data = await UserServices.getUsersCount();
+        res.status(200).json({
+            ...data,
+            code: 200,
+        });
+    }catch(error){
+        res.status(error.output?.statusCode ?? 500).json(error);
+    }
+}
+export const deleteUser = async (req, res) => {
+    try{
+         const id = req.params.id;
+
+        const data = await UserServices.deleteUser(id);
         res.status(200).json({
             ...data,
             code: 200,

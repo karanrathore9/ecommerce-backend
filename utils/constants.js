@@ -15,12 +15,12 @@ export const ROUTES = {
   FEATURED_PRODUCT_BY_LIMIT: "/featured-products/:limit",
   ADD_GALARY_IMAGES: "/add-galary-images/:id",
 
-
   ADD_USER: "/add-user",
   GET_ALL_USERS: "/get-all-users",
   GET_USER_BY_ID: "/user/:id",
   UPDATE_USER_BY_ID: "/update-user/:id",
   GET_USERS_COUNT: "/users-count",
+  DELETE_USER: "/delete-user/:id",
 
   LOGIN: "/login",
   REGISTER: "/register",
@@ -32,7 +32,7 @@ export const ROUTES = {
   DELETE_ORDER: "/delete-order/:id",
   GET_TOTAL_SALES: "/total-sales",
   GET_ORDER_COUNT: "/order-count",
-  GET_ORDERS_HISTORY:"/get-orders-history"
+  GET_ORDERS_HISTORY: "/get-orders-history",
 };
 
 export const API_RESPONSE_MSG = {
